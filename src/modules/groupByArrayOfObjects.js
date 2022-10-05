@@ -11,13 +11,13 @@
  *   { name: 'oranges', category: 'fruits' },
  *   { name: 'potatoes', category: 'vegetables' }
  * ];
- * 
+ *
  * groupByArrayOfObjects(products, 'category');
- * 
+ *
  * //
  * {
  *   'fruits': [
- *     { name: 'apples', category: 'fruits' }, 
+ *     { name: 'apples', category: 'fruits' },
  *     { name: 'oranges', category: 'fruits' },
  *   ],
  *   'vegetables': [
@@ -34,4 +34,4 @@ export const groupByArrayOfObjects = (collection, identifier) => {
     }
     return Object.assign(hash, { [obj[identifier]]:( hash[obj[identifier]] || [] ).concat(obj)});
   }, {})
-}
+};
