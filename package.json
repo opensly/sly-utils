@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup --config ./rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/otherdash/otherdash/issues"
   },
-  "homepage": "https://github.com/otherdash/otherdash#readme"
+  "homepage": "https://github.com/otherdash/otherdash#readme",
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }
