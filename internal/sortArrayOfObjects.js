@@ -1,5 +1,3 @@
-
-
 /**
  * Utility method to order the objects of the collection by the given property
  * of its object element
