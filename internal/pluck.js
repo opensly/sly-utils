@@ -1,5 +1,6 @@
 /**
- * Utility method to extract the attribute from each model in the collection.
+ * Utility method to extract the value of the given property
+ * of its object element from each object in the collection.
  * @param store Array of objects
  * @param key The key to extract the attribute
  * @returns Returns the array of extracted values 
