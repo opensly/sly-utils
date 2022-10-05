@@ -39,7 +39,6 @@
  * 
  */
 
-
 export const sortArrayOfObjects = (collection, identifier) => {
   return collection.sort((a, b) => {
     return a[identifier] - b[identifier];
