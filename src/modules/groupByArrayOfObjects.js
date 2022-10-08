@@ -32,6 +32,6 @@ export const groupByArrayOfObjects = (collection, identifier) => {
     if (obj[identifier] === undefined) {
       return hash;
     }
-    return Object.assign(hash, { [obj[identifier]]:( hash[obj[identifier]] || [] ).concat(obj)});
-  }, {})
+    return Object.assign(hash, { [obj[identifier]]: (hash[obj[identifier]] || []).concat(obj) });
+  }, {});
 };
