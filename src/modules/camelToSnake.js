@@ -1,6 +1,6 @@
 /**
  * Converts `string` from [Camel case] to [Snake Case]
- * @param {string} [string=''] The string to convert.
+ * @param {string} [str=''] The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -13,8 +13,4 @@
  *
  */
 
-export const camelToSnake = (str) =>
-  str.replace(
-    /\.?([A-Z])/g,
-    (group) => "_" + group.toLowerCase().replace(/^_/, "")
-  );
+export const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.toLowerCase().replace(/^_/, ''));
