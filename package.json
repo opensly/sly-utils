@@ -1,7 +1,7 @@
 {
-  "name": "otherdash",
+  "name": "sly-utils",
   "version": "0.0.1",
-  "description": "",
+  "description": "JavaScript utility library by opensly",
   "main": "index.js",
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/otherdash/otherdash.git"
+    "url": "git+https://github.com/opensly/sly-utils.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/otherdash/otherdash/issues"
+    "url": "https://github.com/opensly/sly-utils/issues"
   },
-  "homepage": "https://github.com/otherdash/otherdash#readme",
+  "homepage": "https://github.com/opensly/sly-utils#readme",
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
     "rollup": "^2.79.1",
