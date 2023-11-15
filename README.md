@@ -7,7 +7,7 @@ Supporting utility methods:
 - Group By Array of Objects
 - Pluck from Array of Objects
 - Array Shuffle
+- SEO friendly URL string
 - Snake case to Camel case
 - Sorting Array of Objects
 - Transform Keys
-
