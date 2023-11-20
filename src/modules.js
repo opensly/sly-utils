@@ -1,4 +1,5 @@
 import { camelToSnake } from './modules/camelToSnake.js';
+import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
 import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects.js';
 import { pluck } from './modules/pluck.js';
@@ -9,6 +10,7 @@ import { transformKeys } from './modules/transformKeys.js';
 
 module.exports = {
   camelToSnake: camelToSnake,
+  flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
   pluck: pluck,
