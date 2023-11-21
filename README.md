@@ -4,6 +4,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 
 Supporting utility methods:
 - Camel case to Snake case
+- Flatten the nested object
 - Group By Array of Objects
 - Pluck from Array of Objects
 - Array Shuffle
