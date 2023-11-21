@@ -5,15 +5,15 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'bundle/otherdash.js',
+      file: 'bundle/sly-utils.js',
       format: 'cjs'
     },
     {
-      file: 'bundle/otherdash.es.js',
+      file: 'bundle/sly-utils.es.js',
       format: 'es'
     },
     {
-      file: 'bundle/otherdash.min.js',
+      file: 'bundle/sly-utils.min.js',
       format: 'iife',
       name: 'version',
       plugins: [terser()]
