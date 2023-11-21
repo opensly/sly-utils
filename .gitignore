@@ -7,6 +7,3 @@ Thumbs.db
 
 # Node Modules
 node_modules/
-
-# Bundle
-bundle/
