@@ -5,6 +5,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 ## List of Utility Methods
 
 ### Array Methods
+- Chunk an array
 - Shuffle the array
 
 ### Object Methods
@@ -20,5 +21,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 - Camel case to Snake case
 - Snake case to Camel case
 
-### URL Methods
+### URL/HTML Methods
+- Escape HTML Tags as HTML entities
 - SEO friendly URL string
+- Strip HTML Tags

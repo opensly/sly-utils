@@ -2,21 +2,26 @@
 
 JavaScript utility library by opensly, which helps you to done the hassle jobs easier. The library is very lightweight, size of the min file is less than 1KB.
 
-## Supporting utility methods
+## List of Utility Methods
 
-### For Array/Object operations
+### Array Methods
+- Chunk an array
+- Shuffle the array
+
+### Object Methods
 - Flatten the nested object
+
+### Collection Methods
 - Group By Array of Objects
 - Pluck from Array of Objects
-- Shuffle the array
 - Sorting Array of Objects
 - Transform Keys
 
-
-### For String operations
+### String Methods
 - Camel case to Snake case
 - Snake case to Camel case
 
-
-### For URL operations
+### URL/HTML Methods
+- Escape HTML Tags as HTML entities
 - SEO friendly URL string
+- Strip HTML Tags
