@@ -18,6 +18,35 @@
 const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.toLowerCase().replace(/^_/, ''));
 
 /**
+ * Chunks an array into smaller arrays of a specified size.
+ * 
+ * @example
+ * chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
+ */
+const chunk = (arr, size) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size)
+  );
+
+/**
+ * Utility method to escape HTML tags as HTML entities
+ * @param str Given string
+ * @returns Processed string
+ * 
+ * @example
+ * 
+ */
+const escapeHtml = (str) => {
+  str = toString(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/'/g, '&#39;')
+      .replace(/"/g, '&quot;');
+  return str;
+};
+
+/**
  * Utility method to flatten the nested object to a single level object
  * @param obj Nested object
  * @returns Returns a single level object
@@ -228,6 +257,19 @@ const sortArrayOfObjects = (collection, identifier) => {
 };
 
 /**
+ * Utility method to remove HTML tags from string.
+ * @param str Given string 
+ * @returns Processed string
+ * 
+ * @example
+ * 
+ */
+const stripHtmlTags = (str) => {
+  str = toString(str);
+  return str.replace(/<[^>]*>/g, '');
+};
+
+/**
  * Converts `Object/Array` keys.
  * @param {Object/Array} [] The Object/Array to convert.
  * @param {transformCase} [function] The function return the Object/Array keys into respective case.
@@ -301,6 +343,8 @@ const transformKeys = (obj, transformCase) => {
 
 module.exports = {
   camelToSnake: camelToSnake,
+  chunk: chunk,
+  escapeHtml: escapeHtml,
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
@@ -308,5 +352,6 @@ module.exports = {
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
   sortArrayOfObjects: sortArrayOfObjects,
+  stripHtmlTags: stripHtmlTags,
   transformKeys: transformKeys
 };
