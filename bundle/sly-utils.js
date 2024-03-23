@@ -214,46 +214,27 @@ const snakeToCamel = (str) => str.replace(/([-_][a-z])/g, (group) => group.toUpp
  * of its object element
  * @param collection  Array of objects
  * @param identifier  The identification key to apply the sort
+ * @param order Tells the order. Values should be -> ASC || DESC
  * @returns   Sorted array of objects
  * 
  * @example 
  * 
- * const employees = [
- *   {
- *     firstName: 'John',
- *     lastName: 'Doe',
- *     age: 27,
- *     joinedDate: 'December 15, 2017'
- *   },
- *   {
- *     firstName: 'Ana',
- *     lastName: 'Rosy',
- *     age: 25,
- *     joinedDate: 'January 15, 2019'
- *   },
- *   {
- *     firstName: 'Zion',
- *     lastName: 'Albert',
- *     age: 30,
- *     joinedDate: 'February 15, 2011'
- *   }
+ * const data = [
+ *   { name: 'John', age: 30 },
+ *   { name: 'Alice', age: 25 },
+ *   { name: 'Bob', age: 35 }
  * ];
  * 
- * sortArrayOfObjects(employees, 'age');
+ * console.log(sortByProperty(data, 'age', 'ascending'));
+ * [{age: 25, name: "Alice"}, {age: 30, name: "John"}, {age: 35, name: "Bob"}]
  * 
- * //
- * [
- *   { age: 25, firstName: "Ana", joinedDate: "January 15, 2019", lastName: "Rosy"},
- *   { age: 27, firstName: "John", joinedDate: "December 15, 2017", lastName: "Doe"},
- *   { age: 30, firstName: "Zion", joinedDate: "February 15, 2011", lastName: "Albert"}
- * ]
- * 
+ * console.log(sortByProperty(data, 'age', 'descending'));
+ * [{age: 35, name: "Bob"}, {age: 30, name: "John"}, {age: 25, name: "Alice"}]
  */
 
-const sortArrayOfObjects = (collection, identifier) => {
-  return collection.sort((a, b) => {
-    return a[identifier] - b[identifier];
-  });
+const sortArrayOfObjects = (collection, identifier, order='ASC') => {
+  const sortOrder = order === 'DESC' ? -1 : 1;
+  return collection.slice().sort((a, b) => (a[identifier] > b[identifier] ? sortOrder : -sortOrder));
 };
 
 /**
