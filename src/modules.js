@@ -10,6 +10,7 @@ import { snakeToCamel } from './modules/snakeToCamel.js';
 import { sortArrayOfObjects } from './modules/sortArrayOfObjects.js';
 import { stripHtmlTags } from './modules/stripHtmlTags.js';
 import { transformKeys } from './modules/transformKeys.js';
+import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects.js';
 
 module.exports = {
   camelToSnake: camelToSnake,
@@ -23,5 +24,6 @@ module.exports = {
   snakeToCamel: snakeToCamel,
   sortArrayOfObjects: sortArrayOfObjects,
   stripHtmlTags: stripHtmlTags,
-  transformKeys: transformKeys
+  transformKeys: transformKeys,
+  uniqArrayOfObjects: uniqArrayOfObjects,
 };

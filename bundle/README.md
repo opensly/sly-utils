@@ -9,6 +9,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 - Flatten the nested object
 - Group By Array of Objects
 - Pluck from Array of Objects
+- Removes duplicates from Array of Objects
 - Shuffle the array
 - Snake case to Camel case
 - Sorting Array of Objects
