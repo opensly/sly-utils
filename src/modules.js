@@ -4,6 +4,7 @@ import { escapeHtml } from './modules/escapeHtml.js';
 import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
 import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects.js';
+import { intersection } from './modules/intersection.js';
 import { pluck } from './modules/pluck.js';
 import { shuffle } from './modules/shuffle.js';
 import { snakeToCamel } from './modules/snakeToCamel.js';
@@ -19,6 +20,7 @@ module.exports = {
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
+  intersection: intersection,
   pluck: pluck,
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
