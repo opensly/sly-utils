@@ -6,6 +6,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 - Camel case to Snake case
 - Chunk an array
 - Escape HTML Tags as HTML entities
+- Finds the common elements of 2 Arrays
 - Flatten the nested object
 - Group By Array of Objects
 - Pluck from Array of Objects

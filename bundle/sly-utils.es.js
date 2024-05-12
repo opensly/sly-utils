@@ -148,6 +148,17 @@ const groupByArrayOfObjects = (collection, identifier) => {
 };
 
 /**
+ * Returns the common elements of 2 arrays in a new array
+ * 
+ * @example
+ * intersection([1, 2, 3, 4], [2, 4, 6, 8]);  // [2, 4]
+ *
+ */
+const intersection = (arr1, arr2) => {
+  return arr1.filter(value => arr2.includes(value))
+};
+
+/**
  * Utility method to extract the value of the given property
  * from each object in the collection.
  * @param store Array of objects
@@ -357,6 +368,7 @@ module.exports = {
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
+  intersection: intersection,
   pluck: pluck,
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
