@@ -11,9 +11,9 @@
 
 export const shuffle = (arr) => {
   let temp = [];
-	while(arr.length > 0) {
-  	let random = Math.floor(Math.random() * arr.length);
-		temp.push(arr.splice(random, 1));
-	}
+  while (arr.length > 0) {
+    let random = Math.floor(Math.random() * arr.length);
+    temp.push(arr.splice(random, 1));
+  }
   return temp.flat();
-}
+};
