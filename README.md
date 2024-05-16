@@ -9,6 +9,7 @@ JavaScript utility library by opensly, which helps you to done the hassle jobs e
 - Finds the common elements of 2 Arrays
 - Flatten the nested object
 - Group By Array of Objects
+- Move an element of Array from one position to another
 - Pluck from Array of Objects
 - Removes duplicates from Array of Objects
 - Shuffle the array

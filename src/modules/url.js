@@ -9,14 +9,21 @@
  */
 
 export const friendlyUrlString = (str) => {
-  let chars = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöùúûüýÿ";
-	let cleanChars = "aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy";
-	str = str || ''
-	return str.split('').map(c => {
-		let idx = chars.indexOf(c);
-		return (idx > -1) 
-			? cleanChars[idx] 
-			: c
-	}).join('').toLowerCase()
-  .replace(/[&?]/gi,'').replace(/\s\s/g,'-').replace(/\s/g,'-').replace(/-+/g,'-').replace(/[^a-z0-9-]/gi,'').trim();
-}
+  let chars = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöùúûüýÿ';
+  let cleanChars = 'aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy';
+  str = str || '';
+  return str
+    .split('')
+    .map((c) => {
+      let idx = chars.indexOf(c);
+      return idx > -1 ? cleanChars[idx] : c;
+    })
+    .join('')
+    .toLowerCase()
+    .replace(/[&?]/gi, '')
+    .replace(/\s\s/g, '-')
+    .replace(/\s/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/[^a-z0-9-]/gi, '')
+    .trim();
+};
