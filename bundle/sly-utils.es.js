@@ -97,16 +97,23 @@ const flattenObject = (obj, parent, res={}) => {
  */
 
 const friendlyUrlString = (str) => {
-  let chars = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöùúûüýÿ";
-	let cleanChars = "aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy";
-	str = str || '';
-	return str.split('').map(c => {
-		let idx = chars.indexOf(c);
-		return (idx > -1) 
-			? cleanChars[idx] 
-			: c
-	}).join('').toLowerCase()
-  .replace(/[&?]/gi,'').replace(/\s\s/g,'-').replace(/\s/g,'-').replace(/-+/g,'-').replace(/[^a-z0-9-]/gi,'').trim();
+  let chars = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝßàáâãäåæçèéêëìíîïðñòóôõöùúûüýÿ';
+  let cleanChars = 'aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy';
+  str = str || '';
+  return str
+    .split('')
+    .map((c) => {
+      let idx = chars.indexOf(c);
+      return idx > -1 ? cleanChars[idx] : c;
+    })
+    .join('')
+    .toLowerCase()
+    .replace(/[&?]/gi, '')
+    .replace(/\s\s/g, '-')
+    .replace(/\s/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/[^a-z0-9-]/gi, '')
+    .trim();
 };
 
 /**
@@ -159,6 +166,33 @@ const intersection = (arr1, arr2) => {
 };
 
 /**
+ * Utility method to move an array element from one position to another
+ * @param fromIndex 
+ * @param toIndex 
+ * @returns Returns the update array
+ * 
+ * @example
+ * 
+ * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+ * console.log(arr.move(4, 1));
+ * // => ["a", "e", "b", "c", "d", "f", "g", "h"]
+ * 
+ * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+ * console.log(arr.move(0, 7).join(', '));
+ * // => "b, c, d, e, f, g, h, a"
+ * 
+ */
+
+function move(fromIndex, toIndex) {
+  this.splice(toIndex, 0, this.splice(fromIndex, 1)[0]);
+  return this;
+}
+
+function addMoveToArrayPrototype() {
+  Array.prototype.move = move;
+}
+
+/**
  * Utility method to extract the value of the given property
  * from each object in the collection.
  * @param store Array of objects
@@ -194,10 +228,10 @@ const pluck = (store, key) => {
 
 const shuffle = (arr) => {
   let temp = [];
-	while(arr.length > 0) {
-  	let random = Math.floor(Math.random() * arr.length);
-		temp.push(arr.splice(random, 1));
-	}
+  while (arr.length > 0) {
+    let random = Math.floor(Math.random() * arr.length);
+    temp.push(arr.splice(random, 1));
+  }
   return temp.flat();
 };
 
@@ -333,7 +367,7 @@ const transformKeys = (obj, transformCase) => {
 
 /**
  * Removes duplicates from an array of objects.
- * 
+ *
  * @example
  * var users = [
  *   { id: 1, name: "ted" },
@@ -343,25 +377,26 @@ const transformKeys = (obj, transformCase) => {
  *   { id: 4, name: "test" },
  *   { id: 5, name: "abc" }
  * ];
- * 
+ *
  * uniqArrayOfObjects(users)
  * // =>
  * [
- *   { id: 1, name: "ted"}, 
- *   { id: 1, name: "bob"}, 
- *   { id: 3, name: "sara"}, 
- *   { id: 4, name: "test"}, 
+ *   { id: 1, name: "ted"},
+ *   { id: 1, name: "bob"},
+ *   { id: 3, name: "sara"},
+ *   { id: 4, name: "test"},
  *   { id: 5, name: "abc"}
  * ]
- * 
+ *
  */
 
 const uniqArrayOfObjects = (store) => {
-	const uniq = new Set(store.map(e => JSON.stringify(e)));
-	return Array.from(uniq).map(e => JSON.parse(e));
+  const uniq = new Set(store.map((e) => JSON.stringify(e)));
+  return Array.from(uniq).map((e) => JSON.parse(e));
 };
 
 module.exports = {
+  addMoveToArrayPrototype: addMoveToArrayPrototype,
   camelToSnake: camelToSnake,
   chunk: chunk,
   escapeHtml: escapeHtml,

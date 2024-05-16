@@ -5,6 +5,7 @@ import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
 import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects.js';
 import { intersection } from './modules/intersection.js';
+import { addMoveToArrayPrototype } from './modules/move.js';
 import { pluck } from './modules/pluck.js';
 import { shuffle } from './modules/shuffle.js';
 import { snakeToCamel } from './modules/snakeToCamel.js';
@@ -14,6 +15,7 @@ import { transformKeys } from './modules/transformKeys.js';
 import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects.js';
 
 module.exports = {
+  addMoveToArrayPrototype: addMoveToArrayPrototype,
   camelToSnake: camelToSnake,
   chunk: chunk,
   escapeHtml: escapeHtml,
