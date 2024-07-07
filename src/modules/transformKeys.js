@@ -18,9 +18,9 @@
       ],
     },
    };
-  
+
   const resObject = transformKeys(Object, snakeToCamel);
-  
+
   resObject =  {
     firstleVel: {
       secondLevel: [{
@@ -36,34 +36,22 @@
 
 export const transformKeys = (obj, transformCase) => {
   if (Array.isArray(obj)) {
-    let newArray = [];
-    obj.forEach((item) => {
-      if (typeof item === 'object') {
-        newArray.push(transformKeys(item, transformCase));
-      } else {
-        newArray.push(item);
-      }
-    });
-    return newArray;
+    return obj.map((item) => (typeof item === 'object' && item !== null ? transformKeys(item, transformCase) : item));
   } else {
     let newObject = {};
-    for (let ob in obj) {
-      if (Array.isArray(obj[ob])) {
-        let newArray = [];
-        obj[ob].forEach((item) => {
-          if (typeof item === 'object') {
-            newArray.push(transformKeys(item, transformCase));
-          } else {
-            newArray.push(item);
-          }
-        });
-        newObject[transformCase(ob)] = newArray;
-      } else if (obj[ob] === null) {
-        newObject[transformCase(ob)] = null;
-      } else if (typeof obj[ob] === 'object') {
-        newObject[transformCase(ob)] = transformKeys(obj[ob], transformCase);
-      } else {
-        newObject[transformCase(ob)] = obj[ob];
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (Array.isArray(obj[key])) {
+          newObject[transformCase(key)] = obj[key].map((item) =>
+            typeof item === 'object' && item !== null ? transformKeys(item, transformCase) : item
+          );
+        } else if (obj[key] === null) {
+          newObject[transformCase(key)] = null;
+        } else if (typeof obj[key] === 'object') {
+          newObject[transformCase(key)] = transformKeys(obj[key], transformCase);
+        } else {
+          newObject[transformCase(key)] = obj[key];
+        }
       }
     }
     return newObject;

@@ -1,11 +1,14 @@
 /**
  * Utility method to convert any string to SEO friendly URL string
- * @param str Normal string
- * @returns Returns SEO friendly URL string
+ * @param {string} Normal string
+ * @returns {string} Returns SEO friendly URL string
  *
  * @example
+ *
  * const testString = "Evanston, IN 47531, USA pizza food & wine & music";
- * friendlyUrlString(testString); // evanston-in-47531-usa-pizza-food-wine-music
+ * friendlyUrlString(testString);
+ * // => evanston-in-47531-usa-pizza-food-wine-music
+ *
  */
 
 export const friendlyUrlString = (str) => {
@@ -13,6 +16,7 @@ export const friendlyUrlString = (str) => {
   let cleanChars = 'aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy';
   str = str || '';
   return str
+    .trim()
     .split('')
     .map((c) => {
       let idx = chars.indexOf(c);

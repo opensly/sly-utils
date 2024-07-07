@@ -1,8 +1,8 @@
 /**
  * Utility method to groupBy array of objects by given element of its object
- * @param collection  Array of objects
- * @param identifier  The identification key to apply the groupBy
- * @returns grouped object
+ * @param {array}  Array of objects
+ * @param {string}  The identification key to apply the groupBy
+ * @returns {object}
  *
  * @exmaple
  *
@@ -29,8 +29,8 @@
 
 export const groupByArrayOfObjects = (collection, identifier) => {
   return collection.reduce((hash, obj) => {
-    if (obj[identifier] === undefined) {
-      return hash;
+    if (typeof obj !== 'object' || obj === null || obj[identifier] === undefined) {
+      return hash; // Skip non-object elements
     }
     return Object.assign(hash, { [obj[identifier]]: (hash[obj[identifier]] || []).concat(obj) });
   }, {});

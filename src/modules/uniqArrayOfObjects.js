@@ -1,7 +1,10 @@
 /**
  * Removes duplicates from an array of objects.
+ * @param {array} Array of objects
+ * @returns {array}
  *
  * @example
+ *
  * var users = [
  *   { id: 1, name: "ted" },
  *   { id: 1, name: "bob" },
