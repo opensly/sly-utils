@@ -1,6 +1,6 @@
 /**
  * Converts `string` from [Camel case] to [Kebab Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -13,7 +13,7 @@ export const camelToKebab = (str) => str.replace(/\.?([A-Z])/g, (group) => '-' +
 
 /**
  * Converts `string` from [Camel case] to [Snake Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -26,7 +26,7 @@ export const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' +
 
 /**
  * Converts `string` from [Kebab case] to [Camel Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -39,7 +39,7 @@ export const kebabToCamel = (str) => str.replace(/-./g, (x) => x[1].toUpperCase(
 
 /**
  * Converts `string` from [Snake Case] to [Camel case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example

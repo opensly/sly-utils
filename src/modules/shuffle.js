@@ -1,19 +1,25 @@
 /**
- * Utility method to shuffle the given array and returns
- * the shuffled array.
- * @param arr Array of values
- * @returns Returns the array of shuffled values
+ * Utility method to shuffle the given array and returns the shuffled array.
+ * @param {array} Array of values
+ * @returns {array} Returns the array of shuffled values
  *
  * @example
+ *
  * const list = ['apple', 'banana', 'cherry', 'grapes', 'jackfruit', 'kiwi'];
- * shuffle(list); // ["jackfruit", "apple", "kiwi", "grapes", "banana", "cherry"]
+ * shuffle(list);
+ * // => ["jackfruit", "apple", "kiwi", "grapes", "banana", "cherry"]
+ *
  */
 
 export const shuffle = (arr) => {
-  let temp = [];
-  while (arr.length > 0) {
-    let random = Math.floor(Math.random() * arr.length);
-    temp.push(arr.splice(random, 1));
+  // Create a copy of the original array
+  const newArr = [...arr];
+
+  // Fisher-Yates (Knuth) Shuffle algorithm
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
   }
-  return temp.flat();
+
+  return newArr;
 };

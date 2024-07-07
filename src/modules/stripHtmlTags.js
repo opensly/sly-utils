@@ -1,12 +1,12 @@
 /**
  * Utility method to remove HTML tags from string.
- * @param str Given string 
+ * @param str Given string
  * @returns Processed string
- * 
+ *
  * @example
- * 
+ *
  */
 export const stripHtmlTags = (str) => {
-  str = toString(str);
+  str = str.toString();
   return str.replace(/<[^>]*>/g, '');
 };

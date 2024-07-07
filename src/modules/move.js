@@ -1,19 +1,19 @@
 /**
  * Utility method to move an array element from one position to another
- * @param fromIndex 
- * @param toIndex 
- * @returns Returns the update array
- * 
+ * @param {number} from index
+ * @param {number} to index
+ * @returns {array} returns the update array
+ *
  * @example
- * 
+ *
  * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
- * console.log(arr.move(4, 1));
+ * arr.move(4, 1);
  * // => ["a", "e", "b", "c", "d", "f", "g", "h"]
- * 
+ *
  * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
- * console.log(arr.move(0, 7).join(', '));
+ * arr.move(0, 7).join(', ');
  * // => "b, c, d, e, f, g, h, a"
- * 
+ *
  */
 
 function move(fromIndex, toIndex) {

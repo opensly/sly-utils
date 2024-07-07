@@ -1,10 +1,11 @@
 /**
  * Utility method to flatten the nested object to a single level object
- * @param obj Nested object
- * @returns Returns a single level object
- * 
+ * @param {object} Nested object
+ * @returns {object} Returns a single level object
+ *
  * @example
- * When the input object is the below
+ *
+ * Given input:
  * let input = {
  *   "user": {
  *     "name": "XYZ",
@@ -15,10 +16,10 @@
  *     }
  *   }
  * }
- * 
+ *
  * flattenObject(input);
  *
- * The expected output object is the below
+ * Expected output:
  * {
  *   "userName": "XYZ",
  *   "userCreatedDate": "123424",
@@ -27,15 +28,17 @@
  * }
  */
 
-export const flattenObject = (obj, parent, res={}) => {
+export const flattenObject = (obj, parent, res = {}) => {
   for (let key in obj) {
     let capitalized = key[0].toUpperCase() + key.substring(1);
     let propName = parent ? parent + capitalized : key;
-    if (typeof obj[key] == 'object') {
+    if (obj[key] === null) {
+      res[parent ? parent + key[0].toUpperCase() + key.substring(1) : key] = null;
+    } else if (typeof obj[key] == 'object') {
       flattenObject(obj[key], propName, res);
     } else {
       res[propName] = obj[key];
     }
   }
   return res;
-}
+};
