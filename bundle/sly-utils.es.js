@@ -1,6 +1,6 @@
 /**
  * Converts `string` from [Camel case] to [Kebab Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -13,7 +13,7 @@ const camelToKebab = (str) => str.replace(/\.?([A-Z])/g, (group) => '-' + group.
 
 /**
  * Converts `string` from [Camel case] to [Snake Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -26,7 +26,7 @@ const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.
 
 /**
  * Converts `string` from [Kebab case] to [Camel Case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -39,7 +39,7 @@ const kebabToCamel = (str) => str.replace(/-./g, (x) => x[1].toUpperCase());
 
 /**
  * Converts `string` from [Snake Case] to [Camel case]
- * @param {string} [str=''] The string to convert.
+ * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
  *
  * @example
@@ -52,14 +52,26 @@ const snakeToCamel = (str) => str.replace(/([-_][a-z])/g, (group) => group.toUpp
 
 /**
  * Chunks an array into smaller arrays of a specified size.
- * 
+ * @param {array}
+ * @param {number} Number of chunks to be derived
+ *
  * @example
- * chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
+ *
+ * chunk([1, 2, 3, 4, 5], 2);
+ * // => [[1,2],[3,4],[5]]
  */
-const chunk = (arr, size) =>
-  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-    arr.slice(i * size, i * size + size)
-  );
+
+const chunk = (arr, size) => {
+  // Handle undefined array or empty array or zero chunk size
+  if (!arr || arr.length === 0 || size <= 0) {
+    return [];
+  }
+
+  // Round up non-integer chunk size
+  size = Math.ceil(size);
+
+  return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
+};
 
 /**
  * Returns the previous date as given, with the given delimiter
@@ -82,29 +94,45 @@ const backDate = (days, delimiter) => {
 
 /**
  * Utility method to escape HTML tags as HTML entities
- * @param str Given string
- * @returns Processed string
- * 
+ * @param {string} String with HTML tags
+ * @returns {string} String with HTML entities
+ *
  * @example
- * 
+ *
+ * escapeHtml('AT&T');
+ * // => AT&amp;T
+ *
+ * escapeHtml('<div>');
+ * // => &lt;div&gt;
+ *
+ * escapeHtml('</div>');
+ * // => &lt;/div&gt;
+ *
+ * escapeHtml("O'Reilly");
+ * // => O&#39;Reilly
+ *
+ * escapeHtml('He said, "Hello"');
+ * // => He said, &quot;Hello&quot;
+ *
  */
+
 const escapeHtml = (str) => {
-  str = toString(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/'/g, '&#39;')
-      .replace(/"/g, '&quot;');
+  if (typeof str === 'undefined') {
+    return ''; // Or handle undefined input as needed
+  }
+
+  str = str.toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
   return str;
 };
 
 /**
  * Utility method to flatten the nested object to a single level object
- * @param obj Nested object
- * @returns Returns a single level object
- * 
+ * @param {object} Nested object
+ * @returns {object} Returns a single level object
+ *
  * @example
- * When the input object is the below
+ *
+ * Given input:
  * let input = {
  *   "user": {
  *     "name": "XYZ",
@@ -115,10 +143,10 @@ const escapeHtml = (str) => {
  *     }
  *   }
  * }
- * 
+ *
  * flattenObject(input);
  *
- * The expected output object is the below
+ * Expected output:
  * {
  *   "userName": "XYZ",
  *   "userCreatedDate": "123424",
@@ -127,11 +155,13 @@ const escapeHtml = (str) => {
  * }
  */
 
-const flattenObject = (obj, parent, res={}) => {
+const flattenObject = (obj, parent, res = {}) => {
   for (let key in obj) {
     let capitalized = key[0].toUpperCase() + key.substring(1);
     let propName = parent ? parent + capitalized : key;
-    if (typeof obj[key] == 'object') {
+    if (obj[key] === null) {
+      res[parent ? parent + key[0].toUpperCase() + key.substring(1) : key] = null;
+    } else if (typeof obj[key] == 'object') {
       flattenObject(obj[key], propName, res);
     } else {
       res[propName] = obj[key];
@@ -142,12 +172,15 @@ const flattenObject = (obj, parent, res={}) => {
 
 /**
  * Utility method to convert any string to SEO friendly URL string
- * @param str Normal string
- * @returns Returns SEO friendly URL string
+ * @param {string} Normal string
+ * @returns {string} Returns SEO friendly URL string
  *
  * @example
+ *
  * const testString = "Evanston, IN 47531, USA pizza food & wine & music";
- * friendlyUrlString(testString); // evanston-in-47531-usa-pizza-food-wine-music
+ * friendlyUrlString(testString);
+ * // => evanston-in-47531-usa-pizza-food-wine-music
+ *
  */
 
 const friendlyUrlString = (str) => {
@@ -155,6 +188,7 @@ const friendlyUrlString = (str) => {
   let cleanChars = 'aaaaaaaceeeeiiiidnooooouuuuysaaaaaaaceeeeiiiidnooooouuuuyy';
   str = str || '';
   return str
+    .trim()
     .split('')
     .map((c) => {
       let idx = chars.indexOf(c);
@@ -172,9 +206,9 @@ const friendlyUrlString = (str) => {
 
 /**
  * Utility method to groupBy array of objects by given element of its object
- * @param collection  Array of objects
- * @param identifier  The identification key to apply the groupBy
- * @returns grouped object
+ * @param {array}  Array of objects
+ * @param {string}  The identification key to apply the groupBy
+ * @returns {object}
  *
  * @exmaple
  *
@@ -201,8 +235,8 @@ const friendlyUrlString = (str) => {
 
 const groupByArrayOfObjects = (collection, identifier) => {
   return collection.reduce((hash, obj) => {
-    if (obj[identifier] === undefined) {
-      return hash;
+    if (typeof obj !== 'object' || obj === null || obj[identifier] === undefined) {
+      return hash; // Skip non-object elements
     }
     return Object.assign(hash, { [obj[identifier]]: (hash[obj[identifier]] || []).concat(obj) });
   }, {});
@@ -210,31 +244,36 @@ const groupByArrayOfObjects = (collection, identifier) => {
 
 /**
  * Returns the common elements of 2 arrays in a new array
- * 
+ * @param {array}
+ * @param {array}
+ *
  * @example
- * intersection([1, 2, 3, 4], [2, 4, 6, 8]);  // [2, 4]
+ *
+ * intersection([1, 2, 3, 4], [2, 4, 6, 8]);
+ * // => [2, 4]
  *
  */
 const intersection = (arr1, arr2) => {
-  return arr1.filter(value => arr2.includes(value))
+  const set1 = new Set(arr1);
+  return arr2.filter((value) => set1.has(value));
 };
 
 /**
  * Utility method to move an array element from one position to another
- * @param fromIndex 
- * @param toIndex 
- * @returns Returns the update array
- * 
+ * @param {number} from index
+ * @param {number} to index
+ * @returns {array} returns the update array
+ *
  * @example
- * 
+ *
  * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
- * console.log(arr.move(4, 1));
+ * arr.move(4, 1);
  * // => ["a", "e", "b", "c", "d", "f", "g", "h"]
- * 
+ *
  * var arr = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
- * console.log(arr.move(0, 7).join(', '));
+ * arr.move(0, 7).join(', ');
  * // => "b, c, d, e, f, g, h, a"
- * 
+ *
  */
 
 function move(fromIndex, toIndex) {
@@ -249,9 +288,9 @@ function addMoveToArrayPrototype() {
 /**
  * Utility method to extract the value of the given property
  * from each object in the collection.
- * @param store Array of objects
- * @param key The key to extract the attribute
- * @returns Returns the array of extracted values
+ * @param {array} Array of objects
+ * @param {number} The key to extract the attribute
+ * @returns {array} Returns the array of extracted values
  *
  * @example
  *
@@ -261,7 +300,8 @@ function addMoveToArrayPrototype() {
  *   {name: 'humpty', age: 16}
  * ];
  *
- * pluck(list, 'age'); // [14, 15, 16]
+ * pluck(list, 'age');
+ * // => [14, 15, 16]
  *
  */
 
@@ -270,63 +310,69 @@ const pluck = (store, key) => {
 };
 
 /**
- * Utility method to shuffle the given array and returns
- * the shuffled array.
- * @param arr Array of values
- * @returns Returns the array of shuffled values
+ * Utility method to shuffle the given array and returns the shuffled array.
+ * @param {array} Array of values
+ * @returns {array} Returns the array of shuffled values
  *
  * @example
+ *
  * const list = ['apple', 'banana', 'cherry', 'grapes', 'jackfruit', 'kiwi'];
- * shuffle(list); // ["jackfruit", "apple", "kiwi", "grapes", "banana", "cherry"]
+ * shuffle(list);
+ * // => ["jackfruit", "apple", "kiwi", "grapes", "banana", "cherry"]
+ *
  */
 
 const shuffle = (arr) => {
-  let temp = [];
-  while (arr.length > 0) {
-    let random = Math.floor(Math.random() * arr.length);
-    temp.push(arr.splice(random, 1));
+  // Create a copy of the original array
+  const newArr = [...arr];
+
+  // Fisher-Yates (Knuth) Shuffle algorithm
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
   }
-  return temp.flat();
+
+  return newArr;
 };
 
 /**
  * Utility method to order the objects of the collection by the given property
  * of its object element
- * @param collection  Array of objects
- * @param identifier  The identification key to apply the sort
- * @param order Tells the order. Values should be -> ASC || DESC
- * @returns   Sorted array of objects
- * 
- * @example 
- * 
+ * @param {array} Array of objects
+ * @param {string} The identification key to apply the sort
+ * @param {string} Tells the order. Values should be -> ASC || DESC
+ * @returns {array} Sorted array of objects
+ *
+ * @example
+ *
  * const data = [
  *   { name: 'John', age: 30 },
  *   { name: 'Alice', age: 25 },
  *   { name: 'Bob', age: 35 }
  * ];
- * 
- * console.log(sortByProperty(data, 'age', 'ascending'));
- * [{age: 25, name: "Alice"}, {age: 30, name: "John"}, {age: 35, name: "Bob"}]
- * 
- * console.log(sortByProperty(data, 'age', 'descending'));
- * [{age: 35, name: "Bob"}, {age: 30, name: "John"}, {age: 25, name: "Alice"}]
+ *
+ * sortByProperty(data, 'age', 'ascending');
+ * // => [{age: 25, name: "Alice"}, {age: 30, name: "John"}, {age: 35, name: "Bob"}]
+ *
+ * sortByProperty(data, 'age', 'descending');
+ * // => [{age: 35, name: "Bob"}, {age: 30, name: "John"}, {age: 25, name: "Alice"}]
  */
 
-const sortArrayOfObjects = (collection, identifier, order='ASC') => {
+const sortArrayOfObjects = (collection, identifier, order = 'ASC') => {
   const sortOrder = order === 'DESC' ? -1 : 1;
   return collection.slice().sort((a, b) => (a[identifier] > b[identifier] ? sortOrder : -sortOrder));
 };
 
 /**
  * Utility method to remove HTML tags from string.
- * @param str Given string 
+ * @param str Given string
  * @returns Processed string
- * 
+ *
  * @example
- * 
+ *
  */
 const stripHtmlTags = (str) => {
-  str = toString(str);
+  str = str.toString();
   return str.replace(/<[^>]*>/g, '');
 };
 
@@ -350,9 +396,9 @@ const stripHtmlTags = (str) => {
       ],
     },
    };
-  
+
   const resObject = transformKeys(Object, snakeToCamel);
-  
+
   resObject =  {
     firstleVel: {
       secondLevel: [{
@@ -368,34 +414,22 @@ const stripHtmlTags = (str) => {
 
 const transformKeys = (obj, transformCase) => {
   if (Array.isArray(obj)) {
-    let newArray = [];
-    obj.forEach((item) => {
-      if (typeof item === 'object') {
-        newArray.push(transformKeys(item, transformCase));
-      } else {
-        newArray.push(item);
-      }
-    });
-    return newArray;
+    return obj.map((item) => (typeof item === 'object' && item !== null ? transformKeys(item, transformCase) : item));
   } else {
     let newObject = {};
-    for (let ob in obj) {
-      if (Array.isArray(obj[ob])) {
-        let newArray = [];
-        obj[ob].forEach((item) => {
-          if (typeof item === 'object') {
-            newArray.push(transformKeys(item, transformCase));
-          } else {
-            newArray.push(item);
-          }
-        });
-        newObject[transformCase(ob)] = newArray;
-      } else if (obj[ob] === null) {
-        newObject[transformCase(ob)] = null;
-      } else if (typeof obj[ob] === 'object') {
-        newObject[transformCase(ob)] = transformKeys(obj[ob], transformCase);
-      } else {
-        newObject[transformCase(ob)] = obj[ob];
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (Array.isArray(obj[key])) {
+          newObject[transformCase(key)] = obj[key].map((item) =>
+            typeof item === 'object' && item !== null ? transformKeys(item, transformCase) : item
+          );
+        } else if (obj[key] === null) {
+          newObject[transformCase(key)] = null;
+        } else if (typeof obj[key] === 'object') {
+          newObject[transformCase(key)] = transformKeys(obj[key], transformCase);
+        } else {
+          newObject[transformCase(key)] = obj[key];
+        }
       }
     }
     return newObject;
@@ -404,8 +438,11 @@ const transformKeys = (obj, transformCase) => {
 
 /**
  * Removes duplicates from an array of objects.
+ * @param {array} Array of objects
+ * @returns {array}
  *
  * @example
+ *
  * var users = [
  *   { id: 1, name: "ted" },
  *   { id: 1, name: "bob" },
