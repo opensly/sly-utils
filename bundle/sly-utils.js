@@ -1,6 +1,19 @@
 'use strict';
 
 /**
+ * Converts `string` from [Camel case] to [Kebab Case]
+ * @param {string} [str=''] The string to convert.
+ * @returns {string} Returns the camel cased string.
+ *
+ * @example
+ *
+ * camelToKebab('helloWorld')
+ * // => 'hello-world'
+ */
+
+const camelToKebab = (str) => str.replace(/\.?([A-Z])/g, (group) => '-' + group.toLowerCase().replace(/^_/, ''));
+
+/**
  * Converts `string` from [Camel case] to [Snake Case]
  * @param {string} [str=''] The string to convert.
  * @returns {string} Returns the camel cased string.
@@ -9,13 +22,35 @@
  *
  * camelToSnake('helloWorld')
  * // => 'hello_world'
- *
- * camelToSnake('firstClass')
- * // => 'first_class'
- *
  */
 
 const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.toLowerCase().replace(/^_/, ''));
+
+/**
+ * Converts `string` from [Kebab case] to [Camel Case]
+ * @param {string} [str=''] The string to convert.
+ * @returns {string} Returns the camel cased string.
+ *
+ * @example
+ *
+ * kebabToCamel('hello-world')
+ * // => 'helloWorld'
+ */
+
+const kebabToCamel = (str) => str.replace(/-./g, (x) => x[1].toUpperCase());
+
+/**
+ * Converts `string` from [Snake Case] to [Camel case]
+ * @param {string} [str=''] The string to convert.
+ * @returns {string} Returns the camel cased string.
+ *
+ * @example
+ *
+ * snakeToCamel('hello_world')
+ * // => 'helloWorld'
+ */
+
+const snakeToCamel = (str) => str.replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('_', '').replace('-', ''));
 
 /**
  * Chunks an array into smaller arrays of a specified size.
@@ -27,6 +62,25 @@ const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
     arr.slice(i * size, i * size + size)
   );
+
+/**
+ * Returns the previous date as given, with the given delimiter
+ * @param {number} Number to define how many days to go back
+ * @param {string} Delimiter to be used in return date value
+ *
+ * @example
+ *
+ * backDate(30, '/');
+ * // => returns 30 days previous date with '/' as delimiter
+ */
+
+const backDate = (days, delimiter) => {
+  const date = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  return `${day}${delimiter}${month}${delimiter}${year}`;
+};
 
 /**
  * Utility method to escape HTML tags as HTML entities
@@ -238,23 +292,6 @@ const shuffle = (arr) => {
 };
 
 /**
- * Converts `string` from [Snake Case] to [Camel case]
- * @param {string} [str=''] The string to convert.
- * @returns {string} Returns the camel cased string.
- *
- * @example
- *
- * snakeToCamel('hello_world')
- * // => 'helloWorld'
- *
- * camelToSnake('first_class')
- * // => 'firstClass'
- *
- */
-
-const snakeToCamel = (str) => str.replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('_', '').replace('-', ''));
-
-/**
  * Utility method to order the objects of the collection by the given property
  * of its object element
  * @param collection  Array of objects
@@ -399,13 +436,16 @@ const uniqArrayOfObjects = (store) => {
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
+  camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
   chunk: chunk,
+  backDate: backDate,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
   intersection: intersection,
+  kebabToCamel: kebabToCamel,
   pluck: pluck,
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
