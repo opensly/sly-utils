@@ -2,6 +2,7 @@ import { camelToKebab, camelToSnake, kebabToCamel, snakeToCamel } from './module
 import { chunk } from './modules/chunk.js';
 import { compareStrings } from './compareStrings.js';
 import { backDate } from './modules/dateUtils.js';
+import { doesExist } from './modules/doesExist.js';
 import { escapeHtml } from './modules/escapeHtml.js';
 import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
@@ -17,11 +18,12 @@ import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects.js';
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
+  backDate: backDate,
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
   chunk: chunk,
   compareStrings: compareStrings,
-  backDate: backDate,
+  doesExist: doesExist,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,
