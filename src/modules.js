@@ -1,5 +1,6 @@
 import { camelToKebab, camelToSnake, kebabToCamel, snakeToCamel } from './modules/caseConversion.js';
 import { chunk } from './modules/chunk.js';
+import { compareStrings } from './compareStrings.js';
 import { backDate } from './modules/dateUtils.js';
 import { escapeHtml } from './modules/escapeHtml.js';
 import { flattenObject } from './modules/flattenObject.js';
@@ -19,6 +20,7 @@ module.exports = {
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
   chunk: chunk,
+  compareStrings: compareStrings,
   backDate: backDate,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,
