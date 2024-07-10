@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { compareStrings } from '../src/modules/compareStrings.js';
 
-describe('compareString', () => {
+describe('validate: compare the given 2 strings', () => {
   it('should return 0 for identical strings', () => {
     expect(compareStrings('test', 'test')).to.equal(0);
   });

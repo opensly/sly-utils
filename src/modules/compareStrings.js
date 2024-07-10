@@ -5,6 +5,8 @@
  * @param {string} target - target string to be compared with.
  * @returns {number}
  *
+ * @example
+ *
  * compareStrings('WONDERWOMEN','WONDER WOMEN');
  * // => 0
  *
