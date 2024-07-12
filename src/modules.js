@@ -1,6 +1,6 @@
 import { camelToKebab, camelToSnake, kebabToCamel, snakeToCamel } from './modules/caseConversion.js';
 import { chunk } from './modules/chunk.js';
-import { compareStrings } from './compareStrings.js';
+import { compareStrings } from './modules/compareStrings.js';
 import { backDate } from './modules/dateUtils.js';
 import { doesExist } from './modules/doesExist.js';
 import { escapeHtml } from './modules/escapeHtml.js';
