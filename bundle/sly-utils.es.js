@@ -74,6 +74,48 @@ const chunk = (arr, size) => {
 };
 
 /**
+ * Utility method to measure of the similarity between two strings. This method is designed to
+ * compute the Levenshtein distance between two strings.
+ * @param {string} source - source string to be compared with.
+ * @param {string} target - target string to be compared with.
+ * @returns {number}
+ *
+ * @example
+ *
+ * compareStrings('WONDERWOMEN','WONDER WOMEN');
+ * // => 0
+ *
+ * compareStrings('Mighty','Almighty');
+ * // => 2
+ */
+
+const compareStrings = (source, target) => {
+  const cleanString = (str) => str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  source = cleanString(source);
+  target = cleanString(target);
+
+  const n = source.length;
+  const m = target.length;
+
+  if (n === 0) return m;
+  if (m === 0) return n;
+
+  const diff = Array.from({ length: n + 1 }, (_, i) => Array(m + 1).fill(0));
+
+  for (let i = 0; i <= n; i++) diff[i][0] = i;
+  for (let j = 0; j <= m; j++) diff[0][j] = j;
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      const cost = source[i - 1] === target[j - 1] ? 0 : 1;
+      diff[i][j] = Math.min(diff[i - 1][j] + 1, diff[i][j - 1] + 1, diff[i - 1][j - 1] + cost);
+    }
+  }
+
+  return diff[n][m];
+};
+
+/**
  * Returns the previous date as given, with the given delimiter
  * @param {number} Number to define how many days to go back
  * @param {string} Delimiter to be used in return date value
@@ -90,6 +132,43 @@ const backDate = (days, delimiter) => {
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   return `${day}${delimiter}${month}${delimiter}${year}`;
+};
+
+/**
+ * Utility method to find out whether the given string exists in a nested array of
+ * objects.
+ * @param {array} arr - Array of objects (could be nested also)
+ * @param {string} key - key value
+ * @param {string} str - string to be identified
+ *
+ * @example
+ *
+ * const nestedArray = [
+ *   { key: 'value1', nested: { key: 'value2', deepNested: [{ key: 'value3' }] } },
+ *   { key: 'value4', nested: [{ key: 'value5'}, { deepNested: [{ key: 'value6' }] }] },
+ *   { key: 'value7', nested: { key: 'value8', deepNested: [{ key: 'value9' }] } }
+ * ];
+ *
+ * doesExist(nestedArray, 'key', 'value3');     // => true
+ * doesExist(nestedArray, 'key', 'value10');    // => false
+ * doesExist(nestedArray, 'key', 'value5');     // => true
+ * doesExist(nestedArray, 'key', 'value7');     // => true
+ * doesExist(nestedArray, 'key', 'value9');     // => true
+ * doesExist(nestedArray, 'key', 'value1');     // => true
+ *
+ */
+
+const doesExist = (arr, key, str) => {
+  const checkNested = (obj) => {
+    if (typeof obj !== 'object' || obj === null) return false;
+    if (Array.isArray(obj)) return obj.some(checkNested);
+
+    if (obj[key] == str) return true;
+
+    return Object.values(obj).some((value) => checkNested(value));
+  };
+
+  return arr.some(checkNested);
 };
 
 /**
@@ -471,10 +550,12 @@ const uniqArrayOfObjects = (store) => {
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
+  backDate: backDate,
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
   chunk: chunk,
-  backDate: backDate,
+  compareStrings: compareStrings,
+  doesExist: doesExist,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,
   friendlyUrlString: friendlyUrlString,

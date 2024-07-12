@@ -1,9 +1,17 @@
 {
   "name": "sly-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JavaScript utility library by opensly",
   "main": "index.js",
   "type": "module",
+  "keywords": [
+    "utils",
+    "utility",
+    "utility-library",
+    "library",
+    "es6-javascript",
+    "javascript"
+  ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
     "copy:files": "cp package.json bundle/ && cp README.md bundle/",
@@ -14,7 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/opensly/sly-utils.git"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/opensly/sly-utils/issues"

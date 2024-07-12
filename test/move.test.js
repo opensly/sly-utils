@@ -37,7 +37,7 @@ describe('validate: move the position of an element in the given array', () => {
   });
 });
 
-describe('Validate add Move to ArrayPrototype', () => {
+describe('validate: adding move method to array prototype', () => {
   it('should add the move method to Array.prototype', () => {
     let arr = [1, 2, 3];
     addMoveToArrayPrototype();

@@ -4,6 +4,7 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 
 ## List of utility methods
 
+- Compare strings (compute the Levenshtein distance between two strings)
 - Escape HTML Tags as HTML entities
 - Flatten the nested object
 - Strip HTML Tags
@@ -14,6 +15,7 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 
 - Chunk an array
 - Finds the common elements of 2 Arrays
+- Finds the given string exists in an Array of Objects.
 - Group By Array of Objects
 - Move an element of Array from one position to another
 - Pluck from Array of Objects
