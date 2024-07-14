@@ -33,7 +33,7 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 
 ## Report & Contribute
 
-Ivory Presentable is currently in active development and fine-tuning.
+Sly-utils is currently in active development and fine-tuning.
 If you encounter any issues, please open a [GitHub issue](https://github.com/opensly/sly-utils/issues).
 If you would like to contribute, please open a [GitHub Pull Request](https://github.com/opensly/sly-utils/pulls).
 
