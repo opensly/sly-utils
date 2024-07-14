@@ -124,16 +124,30 @@ const compareStrings = (source, target) => {
  *
  * @example
  *
- * backDate(30, '/');
- * // => returns 30 days previous date with '/' as delimiter
+ * backDate(30, '/', 'MMDDYYYY');
+ * // => returns 30 days previous date in MMDDYYYY format with '/' as delimiter
+ *
+ * backDate(40, '-');
+ * // => returns 45 days previous date in DDMMYYYY format with '-' as delimiter
+ *
+ * backDate(90);
+ * // => returns 90 days previous date in DDMMYYYY format with '/' as delimiter
+ *
  */
 
-const backDate = (days, delimiter) => {
+const backDate = (days, delimiter = '/', format = 'DDMMYYYY') => {
   const date = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-  return `${day}${delimiter}${month}${delimiter}${year}`;
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+
+  const formats = {
+    MMDDYYYY: `${month}${delimiter}${day}${delimiter}${year}`,
+    YYYYMMDD: `${year}${delimiter}${month}${delimiter}${day}`,
+    DDMMYYYY: `${day}${delimiter}${month}${delimiter}${year}`,
+  };
+
+  return formats[format] || formats['DDMMYYYY'];
 };
 
 /**

@@ -1,6 +1,6 @@
 {
   "name": "sly-utils",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "JavaScript utility library by opensly",
   "main": "index.js",
   "type": "module",
