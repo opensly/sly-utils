@@ -1,5 +1,7 @@
 /**
- * Utility method to escape HTML tags as HTML entities
+ * This method sanitizes the user input in HTML templates to prevent
+ * XSS attacks.This technique ensures that user-generated content is
+ * safely inserted into the DOM without executing any malicious scripts.
  * @param {string} String with HTML tags
  * @returns {string} String with HTML entities
  *
@@ -23,7 +25,7 @@
  */
 
 export const escapeHtml = (str) => {
-  if (typeof str === 'undefined') {
+  if (typeof str !== 'string') {
     return ''; // Or handle undefined input as needed
   }
 

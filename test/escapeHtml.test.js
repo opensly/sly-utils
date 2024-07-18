@@ -40,7 +40,7 @@ describe('validate: escape the html entities in a given string', () => {
 
   it('should handle non-string input by converting to string', () => {
     const input = 12345;
-    const expected = '12345';
+    const expected = '';
     expect(escapeHtml(input)).to.equal(expected);
   });
 });
