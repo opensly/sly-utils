@@ -10,7 +10,8 @@
     "utility-library",
     "library",
     "es6-javascript",
-    "javascript"
+    "javascript",
+    "modular"
   ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
