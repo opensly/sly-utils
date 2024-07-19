@@ -5,6 +5,7 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 ## List of utility methods
 
 - Compare strings (compute the Levenshtein distance between two strings)
+- Deep freezes the nested object
 - Escape HTML Tags as HTML entities
 - Flatten the nested object
 - Strip HTML Tags

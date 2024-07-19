@@ -149,6 +149,39 @@ const backDate = (days, delimiter = '/', format = 'DDMMYYYY') => {
 };
 
 /**
+ *
+ *
+ *
+ * const myObj = {
+ *  internal: {
+ *    a: null,
+ *    b: {
+ *        nested: true
+ *    }
+ *  },
+ * };
+ *
+ * deepFreeze(myObj);
+ *
+ * myObj.internal.a = "anotherValue";
+ * console.log(myObj.internal.a); // => null
+ *
+ * myObj.internal.b.nested = false;
+ * console.log(myObj.internal.b.nested); // => true
+ *
+ */
+
+const deepFreeze = (obj) => {
+  Reflect.ownKeys(obj).forEach((name) => {
+    const value = obj[name];
+    if (value && typeof value === 'object') {
+      deepFreeze(value);
+    }
+  });
+  return Object.freeze(obj);
+};
+
+/**
  * Utility method to find out whether the given string exists in a nested array of
  * objects.
  * @param {array} arr - Array of objects (could be nested also)
@@ -186,7 +219,9 @@ const doesExist = (arr, key, str) => {
 };
 
 /**
- * Utility method to escape HTML tags as HTML entities
+ * This method sanitizes the user input in HTML templates to prevent
+ * XSS attacks.This technique ensures that user-generated content is
+ * safely inserted into the DOM without executing any malicious scripts.
  * @param {string} String with HTML tags
  * @returns {string} String with HTML entities
  *
@@ -210,7 +245,7 @@ const doesExist = (arr, key, str) => {
  */
 
 const escapeHtml = (str) => {
-  if (typeof str === 'undefined') {
+  if (typeof str !== 'string') {
     return ''; // Or handle undefined input as needed
   }
 
@@ -569,6 +604,7 @@ module.exports = {
   camelToSnake: camelToSnake,
   chunk: chunk,
   compareStrings: compareStrings,
+  deepFreeze: deepFreeze,
   doesExist: doesExist,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,

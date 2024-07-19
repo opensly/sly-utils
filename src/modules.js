@@ -2,6 +2,7 @@ import { camelToKebab, camelToSnake, kebabToCamel, snakeToCamel } from './module
 import { chunk } from './modules/chunk.js';
 import { compareStrings } from './modules/compareStrings.js';
 import { backDate } from './modules/dateUtils.js';
+import { deepFreeze } from './modules/deepFreeze.js';
 import { doesExist } from './modules/doesExist.js';
 import { escapeHtml } from './modules/escapeHtml.js';
 import { flattenObject } from './modules/flattenObject.js';
@@ -23,6 +24,7 @@ module.exports = {
   camelToSnake: camelToSnake,
   chunk: chunk,
   compareStrings: compareStrings,
+  deepFreeze: deepFreeze,
   doesExist: doesExist,
   escapeHtml: escapeHtml,
   flattenObject: flattenObject,
