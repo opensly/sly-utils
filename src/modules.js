@@ -16,6 +16,7 @@ import { sortArrayOfObjects } from './modules/sortArrayOfObjects.js';
 import { stripHtmlTags } from './modules/stripHtmlTags.js';
 import { transformKeys } from './modules/transformKeys.js';
 import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects.js';
+import { uuid, uuidShort } from './modules/uuid.js';
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
@@ -39,4 +40,6 @@ module.exports = {
   stripHtmlTags: stripHtmlTags,
   transformKeys: transformKeys,
   uniqArrayOfObjects: uniqArrayOfObjects,
+  uuid: uuid,
+  uuidShort: uuidShort,
 };

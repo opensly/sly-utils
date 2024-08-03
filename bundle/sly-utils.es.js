@@ -149,9 +149,10 @@ const backDate = (days, delimiter = '/', format = 'DDMMYYYY') => {
 };
 
 /**
+ * Utility method to make a nested object immutable
+ * @param {object} Nested object to be frozen
  *
- *
- *
+ * @example
  * const myObj = {
  *  internal: {
  *    a: null,
@@ -597,6 +598,32 @@ const uniqArrayOfObjects = (store) => {
   return Array.from(uniq).map((e) => JSON.parse(e));
 };
 
+/**
+ * Generates a UUID (version 4) string in the format 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.
+ * @returns {string} The generated UUID.
+ */
+
+const uuid = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
+/**
+ * Generates a short UUID-like string in the format 'xxxxxxxx-xxxx'.
+ * @returns {string} The generated short UUID-like string.
+ */
+
+const uuidShort = () => {
+  return 'xxxxxxxx-xxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
   backDate: backDate,
@@ -619,4 +646,6 @@ module.exports = {
   stripHtmlTags: stripHtmlTags,
   transformKeys: transformKeys,
   uniqArrayOfObjects: uniqArrayOfObjects,
+  uuid: uuid,
+  uuidShort: uuidShort,
 };

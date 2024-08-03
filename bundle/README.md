@@ -8,6 +8,7 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 - Deep freezes the nested object
 - Escape HTML Tags as HTML entities
 - Flatten the nested object
+- Generate UUID & UUIDShort
 - Strip HTML Tags
 - Transform Keys
 - URL string transformed to SEO friendly URL

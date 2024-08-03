@@ -1,7 +1,8 @@
 /**
+ * Utility method to make a nested object immutable
+ * @param {object} Nested object to be frozen
  *
- *
- *
+ * @example
  * const myObj = {
  *  internal: {
  *    a: null,
