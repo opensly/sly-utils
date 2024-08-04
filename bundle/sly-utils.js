@@ -1,6 +1,54 @@
 'use strict';
 
 /**
+ * Compares two arrays to determine if they are the same.
+ * Two arrays are considered the same if they have the same length
+ * and their corresponding elements are equal.
+ *
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare.
+ * @returns {boolean} - Returns true if the arrays are the same, false otherwise.
+ *
+ * @example
+ *
+ * const arr1 = [1, 2, 3];
+ * const arr2 = [3, 2, 1];
+ *
+ * areSameArrays(arr1, arr2);
+ * // => true
+ *
+ */
+
+const areSameArrays = (arr1, arr2) => {
+  // If lengths are different, arrays cannot be the same
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  // Create a frequency map for each array with type checking
+  const frequencyMap1 = arr1.reduce((map, item) => {
+    const key = typeof item + ':' + item;
+    map[key] = (map[key] || 0) + 1;
+    return map;
+  }, {});
+
+  const frequencyMap2 = arr2.reduce((map, item) => {
+    const key = typeof item + ':' + item;
+    map[key] = (map[key] || 0) + 1;
+    return map;
+  }, {});
+
+  // Compare frequency maps
+  for (const key in frequencyMap1) {
+    if (frequencyMap1[key] !== frequencyMap2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+/**
  * Converts `string` from [Camel case] to [Kebab Case]
  * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
@@ -27,6 +75,19 @@ const camelToKebab = (str) => str.replace(/\.?([A-Z])/g, (group) => '-' + group.
 const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.toLowerCase().replace(/^_/, ''));
 
 /**
+ * Converts `string` from [Camel Case] to [Pascal case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Pascal cased string.
+ *
+ * @example
+ *
+ * camelToPascal('helloWorld')
+ * // => 'HelloWorld'
+ */
+
+const camelToPascal = (str) => str.replace(/(^\w|_\w)/g, (group) => group.replace('_', '').toUpperCase());
+
+/**
  * Converts `string` from [Kebab case] to [Camel Case]
  * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
@@ -40,6 +101,79 @@ const camelToSnake = (str) => str.replace(/\.?([A-Z])/g, (group) => '_' + group.
 const kebabToCamel = (str) => str.replace(/-./g, (x) => x[1].toUpperCase());
 
 /**
+ * Converts `string` from [Kebab Case] to [Pascal case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Pascal cased string.
+ *
+ * @example
+ *
+ * kebabToPascal('hello-world')
+ * // => 'HelloWorld'
+ */
+
+const kebabToPascal = (str) => str.replace(/(-\w)/g, (group) => group[1].toUpperCase()).replace(/^./, (char) => char.toUpperCase());
+
+/**
+ * Converts `string` from [Kebab case] to [Sanke Case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Snake cased string.
+ *
+ * @example
+ *
+ * kebabToSnake('hello-world')
+ * // => 'hello_world'
+ */
+
+const kebabToSnake = (str) => str.replace(/-/g, '_');
+
+/**
+ * Converts `string` from [Pascal Case] to [Camel case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the camel cased string.
+ *
+ * @example
+ *
+ * pascalToCamel('HelloWorld')
+ * // => 'helloWorld'
+ */
+
+const pascalToCamel = (str) => str.replace(/^./, (char) => char.toLowerCase());
+
+/**
+ * Converts `string` from [Pascal Case] to [Kebab case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the kebab cased string.
+ *
+ * @example
+ *
+ * pascalToCamel('HelloWorld')
+ * // => 'helloWorld'
+ */
+
+const pascalToKebab = (str) =>
+  str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+    .toLowerCase();
+
+/**
+ * Converts `string` from [Pascal case] to [Sanke Case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Snake cased string.
+ *
+ * @example
+ *
+ * pascalToSnake('HelloWorld')
+ * // => 'hello_world'
+ */
+
+const pascalToSnake = (str) =>
+  str
+    .replace(/([A-Z])/g, '_$1')
+    .toLowerCase()
+    .replace(/^_/, '');
+
+/**
  * Converts `string` from [Snake Case] to [Camel case]
  * @param {string} The string to convert.
  * @returns {string} Returns the camel cased string.
@@ -51,6 +185,32 @@ const kebabToCamel = (str) => str.replace(/-./g, (x) => x[1].toUpperCase());
  */
 
 const snakeToCamel = (str) => str.replace(/([-_][a-z])/g, (group) => group.toUpperCase().replace('_', '').replace('-', ''));
+
+/**
+ * Converts `string` from [Sanke Case] to [Pascal case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Pascal cased string.
+ *
+ * @example
+ *
+ * snakeToPascal('hello_world')
+ * // => 'HelloWorld'
+ */
+
+const snakeToPascal = (str) => str.replace(/(_\w)/g, (group) => group[1].toUpperCase()).replace(/^./, (char) => char.toUpperCase());
+
+/**
+ * Converts `string` from [Snake case] to [Kebab Case]
+ * @param {string} The string to convert.
+ * @returns {string} Returns the Snake cased string.
+ *
+ * @example
+ *
+ * snakeToKebab('hello_world')
+ * // => 'hello-world'
+ */
+
+const snakeToKebab = (str) => str.replace(/_/g, '-');
 
 /**
  * Chunks an array into smaller arrays of a specified size.
@@ -390,6 +550,57 @@ const intersection = (arr1, arr2) => {
 };
 
 /**
+ * Converts a Map to a JSON string.
+ *
+ * @param {Map} map - The Map to convert to JSON.
+ * @returns {string} - The JSON string representation of the Map.
+ * @throws {TypeError} - Throws an error if the input is not a Map.
+ *
+ * @example
+ *
+ * const myMap = new Map();
+ * myMap.set('name', 'Alice');
+ * myMap.set('age', 25);
+ *
+ * mapToJson(myMap);
+ * // => {"name":"Alice","age":25}
+ *
+ */
+
+const mapToJson = (map) => {
+  if (!(map instanceof Map)) {
+    throw new TypeError('Input should be a Map');
+  }
+
+  // Convert the Map to an object and then to a JSON string
+  return JSON.stringify(Object.fromEntries(map));
+};
+
+/**
+ * Converts a JSON string to a Map.
+ *
+ * @param {string} jsonString - The JSON string to convert to a Map.
+ * @returns {Map} - The resulting Map object.
+ * @throws {SyntaxError} - Throws an error if the JSON string is not valid.
+ *
+ * @example
+ *
+ * const jsonString = '{"name":"Alice","age":25}';
+ *
+ * jsonToMap(jsonString);
+ * // => Map(2) { 'name' => 'Alice', 'age' => 25 }
+ *
+ */
+
+const jsonToMap = (jsonString) => {
+  // Parse the JSON string to an object
+  const obj = JSON.parse(jsonString);
+
+  // Convert the object to a Map
+  return new Map(Object.entries(obj));
+};
+
+/**
  * Utility method to move an array element from one position to another
  * @param {number} from index
  * @param {number} to index
@@ -628,9 +839,11 @@ const uuidShort = () => {
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
+  areSameArrays: areSameArrays,
   backDate: backDate,
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
+  camelToPascal: camelToPascal,
   chunk: chunk,
   compareStrings: compareStrings,
   deepFreeze: deepFreeze,
@@ -640,10 +853,19 @@ module.exports = {
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
   intersection: intersection,
+  jsonToMap: jsonToMap,
+  mapToJson: mapToJson,
   kebabToCamel: kebabToCamel,
+  kebabToPascal: kebabToPascal,
+  kebabToSnake: kebabToSnake,
+  pascalToCamel: pascalToCamel,
+  pascalToKebab: pascalToKebab,
+  pascalToSnake: pascalToSnake,
   pluck: pluck,
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
+  snakeToKebab: snakeToKebab,
+  snakeToPascal: snakeToPascal,
   sortArrayOfObjects: sortArrayOfObjects,
   stripHtmlTags: stripHtmlTags,
   transformKeys: transformKeys,

@@ -1,7 +1,7 @@
 {
   "name": "sly-utils",
-  "version": "1.3.0",
-  "description": "JavaScript utility library by opensly",
+  "version": "1.4.0",
+  "description": "sly-utils is a modular and efficient JavaScript utility library designed to simplify complex tasks.",
   "main": "index.js",
   "type": "module",
   "keywords": [
