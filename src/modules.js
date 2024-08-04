@@ -1,15 +1,16 @@
 import {
   camelToKebab,
+  camelToPascal,
   camelToSnake,
   kebabToCamel,
-  snakeToCamel,
-  pascalToCamel,
-  camelToPascal,
-  snakeToPascal,
-  kebabToPascal,
-  pascalToSnake,
   kebabToSnake,
+  kebabToPascal,
+  pascalToCamel,
+  pascalToKebab,
+  pascalToSnake,
+  snakeToCamel,
   snakeToKebab,
+  snakeToPascal,
 } from './modules/caseConversion.js';
 import { chunk } from './modules/chunk.js';
 import { compareStrings } from './modules/compareStrings.js';
@@ -49,6 +50,7 @@ module.exports = {
   kebabToPascal: kebabToPascal,
   kebabToSnake: kebabToSnake,
   pascalToCamel: pascalToCamel,
+  pascalToKebab: pascalToKebab,
   pascalToSnake: pascalToSnake,
   pluck: pluck,
   shuffle: shuffle,
