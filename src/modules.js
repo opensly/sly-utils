@@ -1,4 +1,16 @@
-import { camelToKebab, camelToSnake, kebabToCamel, snakeToCamel } from './modules/caseConversion.js';
+import {
+  camelToKebab,
+  camelToSnake,
+  kebabToCamel,
+  snakeToCamel,
+  pascalToCamel,
+  camelToPascal,
+  snakeToPascal,
+  kebabToPascal,
+  pascalToSnake,
+  kebabToSnake,
+  snakeToKebab,
+} from './modules/caseConversion.js';
 import { chunk } from './modules/chunk.js';
 import { compareStrings } from './modules/compareStrings.js';
 import { backDate } from './modules/dateUtils.js';
@@ -23,6 +35,7 @@ module.exports = {
   backDate: backDate,
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
+  camelToPascal: camelToPascal,
   chunk: chunk,
   compareStrings: compareStrings,
   deepFreeze: deepFreeze,
@@ -33,9 +46,15 @@ module.exports = {
   groupByArrayOfObjects: groupByArrayOfObjects,
   intersection: intersection,
   kebabToCamel: kebabToCamel,
+  kebabToPascal: kebabToPascal,
+  kebabToSnake: kebabToSnake,
+  pascalToCamel: pascalToCamel,
+  pascalToSnake: pascalToSnake,
   pluck: pluck,
   shuffle: shuffle,
   snakeToCamel: snakeToCamel,
+  snakeToKebab: snakeToKebab,
+  snakeToPascal: snakeToPascal,
   sortArrayOfObjects: sortArrayOfObjects,
   stripHtmlTags: stripHtmlTags,
   transformKeys: transformKeys,

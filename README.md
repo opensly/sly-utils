@@ -25,12 +25,20 @@ Light-weight JavaScript utility library by opensly, which helps you to done the 
 - Shuffle the array
 - Sorting Array of Objects
 
-### Case Conversion utility methods
+### String Conversion utility methods
 
 - Camel case to Snake case
 - Camel case to Kebab case
+- Camel case to Pascal Case
 - Kebab case to Snake case
+- Kebab case to Camel case
+- Kebab case to Pascal case
+- Pascal case to Camel case
+- Pascal case to Kebab case
+- Pascal case to Snake case
 - Snake case to Camel case
+- Snake case to Pascal case
+- Snake case to Kebab case
 
 
 ## Report & Contribute
