@@ -23,6 +23,7 @@ import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
 import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects.js';
 import { intersection } from './modules/intersection.js';
+import { mapToJson, jsonToMap } from './modules/mapAndJson.js';
 import { addMoveToArrayPrototype } from './modules/move.js';
 import { pluck } from './modules/pluck.js';
 import { shuffle } from './modules/shuffle.js';
@@ -48,6 +49,8 @@ module.exports = {
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
   intersection: intersection,
+  jsonToMap: jsonToMap,
+  mapToJson: mapToJson,
   kebabToCamel: kebabToCamel,
   kebabToPascal: kebabToPascal,
   kebabToSnake: kebabToSnake,

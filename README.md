@@ -5,6 +5,8 @@ sly-utils is a modular and efficient JavaScript utility library designed to simp
 ## List of Utility Methods
 
 - Compare strings (compute the Levenshtein distance between two strings)
+- Convert map to json
+- Convert json to map
 - Deep freeze a nested object
 - Escape HTML tags as HTML entities
 - Flatten a nested object
