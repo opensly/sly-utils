@@ -1,6 +1,6 @@
 # sly-utils
 
-Light-weight JavaScript utility library by opensly, which helps you to done the hassle jobs easier.
+sly-utils is a modular and efficient JavaScript utility library designed to simplify complex tasks.
 
 ## List of Utility Methods
 
