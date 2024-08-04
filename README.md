@@ -2,43 +2,44 @@
 
 Light-weight JavaScript utility library by opensly, which helps you to done the hassle jobs easier.
 
-## List of utility methods
+## List of Utility Methods
 
 - Compare strings (compute the Levenshtein distance between two strings)
-- Deep freezes the nested object
-- Escape HTML Tags as HTML entities
-- Flatten the nested object
+- Deep freeze a nested object
+- Escape HTML tags as HTML entities
+- Flatten a nested object
 - Generate UUID & UUIDShort
-- Strip HTML Tags
-- Transform Keys
-- URL string transformed to SEO friendly URL
+- Strip HTML tags
+- Transform keys
+- Transform URL strings to SEO-friendly URLs
 
-### Array & Array of objects utility methods
+### Utility Methods for Array & Array of Objects
 
+- Check if two given arrays are the same
 - Chunk an array
-- Finds the common elements of 2 Arrays
-- Finds the given string exists in an Array of Objects.
-- Group By Array of Objects
-- Move an element of Array from one position to another
-- Pluck from Array of Objects
-- Removes duplicates from Array of Objects
-- Shuffle the array
-- Sorting Array of Objects
+- Find the common elements of two arrays
+- Find if a given string exists in an array of objects
+- Group by array of objects
+- Move an element in an array from one position to another
+- Pluck values from an array of objects
+- Remove duplicates from an array of objects
+- Shuffle an array
+- Sort an array of objects
 
-### String Conversion utility methods
+### Utility Methods for String Conversion
 
-- Camel case to Snake case
-- Camel case to Kebab case
-- Camel case to Pascal Case
-- Kebab case to Snake case
-- Kebab case to Camel case
+- Camel case to snake case
+- Camel case to kebab case
+- Camel case to Pascal case
+- Kebab case to snake case
+- Kebab case to camel case
 - Kebab case to Pascal case
-- Pascal case to Camel case
-- Pascal case to Kebab case
-- Pascal case to Snake case
-- Snake case to Camel case
+- Pascal case to camel case
+- Pascal case to kebab case
+- Pascal case to snake case
+- Snake case to camel case
 - Snake case to Pascal case
-- Snake case to Kebab case
+- Snake case to kebab case
 
 
 ## Report & Contribute

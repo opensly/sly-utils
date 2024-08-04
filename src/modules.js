@@ -1,3 +1,4 @@
+import { areSameArrays } from './modules/areSameArrays.js';
 import {
   camelToKebab,
   camelToPascal,
@@ -33,6 +34,7 @@ import { uuid, uuidShort } from './modules/uuid.js';
 
 module.exports = {
   addMoveToArrayPrototype: addMoveToArrayPrototype,
+  areSameArrays: areSameArrays,
   backDate: backDate,
   camelToKebab: camelToKebab,
   camelToSnake: camelToSnake,
