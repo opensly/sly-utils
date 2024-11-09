@@ -4,7 +4,7 @@
  * @param  {Array} array - The array to flatten.
  * @return {Array} - The fully flattened array.
  */
-function flattenCompletely(array) {
+export function flattenCompletely(array) {
   const result = [];
   const stack = [...array]; // Start with a copy of the original array
 
@@ -29,7 +29,7 @@ function flattenCompletely(array) {
  * @param  {Number} depth - The depth level to flatten to.
  * @return {Array} - The flattened array up to the given depth.
  */
-function flattenWithDepth(array, depth) {
+export function flattenWithDepth(array, depth) {
   const result = [];
   for (const value of array) {
     if (depth > 0 && Array.isArray(value)) {
@@ -48,6 +48,6 @@ function flattenWithDepth(array, depth) {
  * @param  {Number} [depth] - The optional depth level to flatten to.
  * @return {Array} - The flattened array.
  */
-function arrayFlatten(array, depth = Infinity) {
+export function flattenArray(array, depth = Infinity) {
   return depth === Infinity ? flattenCompletely(array) : flattenWithDepth(array, depth);
 }
