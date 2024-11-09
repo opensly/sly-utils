@@ -19,6 +19,7 @@ import { backDate } from './modules/dateUtils.js';
 import { deepFreeze } from './modules/deepFreeze.js';
 import { doesExist } from './modules/doesExist.js';
 import { escapeHtml } from './modules/escapeHtml.js';
+import { flattenArray, flattenCompletely, flattenWithDepth } from './modules/flattenArray.js';
 import { flattenObject } from './modules/flattenObject.js';
 import { friendlyUrlString } from './modules/url.js';
 import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects.js';
@@ -45,7 +46,10 @@ module.exports = {
   deepFreeze: deepFreeze,
   doesExist: doesExist,
   escapeHtml: escapeHtml,
+  flattenArray: flattenArray, 
+  flattenCompletely: flattenCompletely,
   flattenObject: flattenObject,
+  flattenWithDepth: flattenWithDepth,
   friendlyUrlString: friendlyUrlString,
   groupByArrayOfObjects: groupByArrayOfObjects,
   intersection: intersection,
