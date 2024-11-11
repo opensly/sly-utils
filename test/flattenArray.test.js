@@ -1,7 +1,7 @@
 // test/flattenArray.test.js
 
 import { expect } from 'chai';
-import { flattenCompletely, flattenWithDepth, arrayFlatten } from '../flattenArray.js';
+import { flattenCompletely, flattenWithDepth, arrayFlatten } from '../src/modules/flattenArray.js';
 
 describe('Flatten Array Functions', function() {
   
