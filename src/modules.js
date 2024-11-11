@@ -30,6 +30,7 @@ import { pluck } from './modules/pluck.js';
 import { shuffle } from './modules/shuffle.js';
 import { sortArrayOfObjects } from './modules/sortArrayOfObjects.js';
 import { stripHtmlTags } from './modules/stripHtmlTags.js';
+import { toArray } from './modules/toArray.js';
 import { transformKeys } from './modules/transformKeys.js';
 import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects.js';
 import { uuid, uuidShort } from './modules/uuid.js';
@@ -68,6 +69,7 @@ module.exports = {
   snakeToPascal: snakeToPascal,
   sortArrayOfObjects: sortArrayOfObjects,
   stripHtmlTags: stripHtmlTags,
+  toArray: toArray,
   transformKeys: transformKeys,
   uniqArrayOfObjects: uniqArrayOfObjects,
   uuid: uuid,
