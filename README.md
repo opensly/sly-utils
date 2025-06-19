@@ -2,6 +2,39 @@
 
 sly-utils is a modular and efficient JavaScript utility library designed to simplify complex tasks.
 
+## Installation
+
+```bash
+npm install sly-utils
+```
+
+## Usage
+
+### In JavaScript
+```js
+// ES Module
+import { chunk, camelToSnake, uuid } from 'sly-utils';
+
+const arr = [1, 2, 3, 4, 5, 6];
+console.log(chunk(arr, 2)); // [[1,2],[3,4],[5,6]]
+console.log(camelToSnake('helloWorld')); // 'hello_world'
+console.log(uuid()); // 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+
+// CommonJS
+const { chunk, camelToSnake, uuid } = require('sly-utils');
+```
+
+### In TypeScript
+```ts
+import { chunk, camelToSnake, uuid } from 'sly-utils';
+// TypeScript will provide type checking and autocompletion
+```
+
+## Exports & Structure
+- All utilities are available as named exports from the main package entry.
+- TypeScript types are included automatically for all utilities.
+- The package supports both CommonJS and ES Module imports.
+
 ## List of Utility Methods
 
 - Compare strings (compute the Levenshtein distance between two strings)
@@ -43,6 +76,10 @@ sly-utils is a modular and efficient JavaScript utility library designed to simp
 - Snake case to Pascal case
 - Snake case to kebab case
 
+## Build & Type Support
+- The package includes pre-built JavaScript bundles for both CommonJS and ES Module consumers.
+- TypeScript declaration files are included for full type safety and autocompletion.
+- No additional configuration is needed for most modern build tools.
 
 ## Report & Contribute
 
@@ -50,18 +87,15 @@ Sly-utils is currently in active development and fine-tuning.
 If you encounter any issues, please open a [GitHub issue](https://github.com/opensly/sly-utils/issues).
 If you would like to contribute, please open a [GitHub Pull Request](https://github.com/opensly/sly-utils/pulls).
 
-
 ## Support
 
 Your support inspires & encourage us more. If you are interested to make a donation to us, please click the below PayPal button.
 
 [![PayPal.me](https://img.shields.io/badge/paypal-donate-119fde.svg)](https://www.paypal.me/LakshmikanthV)
 
-
 ## Author
 
 [OpenSly](https://github.com/opensly)
-
 
 ## License
 

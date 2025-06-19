@@ -1,8 +1,9 @@
 import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: 'bundle/sly-utils.js',
@@ -19,5 +20,5 @@ export default {
       plugins: [terser()]
     }
   ],
-  plugins: [json()]
+  plugins: [json(), typescript({ tsconfig: './tsconfig.json' })]
 };
