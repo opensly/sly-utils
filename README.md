@@ -19,9 +19,6 @@ const arr = [1, 2, 3, 4, 5, 6];
 console.log(chunk(arr, 2)); // [[1,2],[3,4],[5,6]]
 console.log(camelToSnake('helloWorld')); // 'hello_world'
 console.log(uuid()); // 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-
-// CommonJS
-const { chunk, camelToSnake, uuid } = require('sly-utils');
 ```
 
 ### In TypeScript
@@ -33,7 +30,7 @@ import { chunk, camelToSnake, uuid } from 'sly-utils';
 ## Exports & Structure
 - All utilities are available as named exports from the main package entry.
 - TypeScript types are included automatically for all utilities.
-- The package supports both CommonJS and ES Module imports.
+- The package supports ES Module imports.
 
 ## List of Utility Methods
 
