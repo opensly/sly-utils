@@ -12,6 +12,7 @@ import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects/groupByAr
 import { intersection } from './modules/intersection/intersection';
 import { mapToJson, jsonToMap } from './modules/mapAndJson/mapAndJson';
 import { addMoveToArrayPrototype } from './modules/move/move';
+import { pick, omit, pickBy, omitBy } from './modules/pick/pick';
 import { pluck } from './modules/pluck/pluck';
 import { shuffle } from './modules/shuffle/shuffle';
 import { sortArrayOfObjects } from './modules/sortArrayOfObjects/sortArrayOfObjects';
@@ -19,7 +20,7 @@ import { stripHtmlTags } from './modules/stripHtmlTags/stripHtmlTags';
 import { transformKeys } from './modules/transformKeys/transformKeys';
 import { uniqArrayOfObjects } from './modules/uniqArrayOfObjects/uniqArrayOfObjects';
 import { uuid, uuidShort } from './modules/uuid/uuid';
-export { addMoveToArrayPrototype, areSameArrays, backDate, camelToKebab, camelToSnake, camelToPascal, chunk, compareStrings, deepFreeze, doesExist, escapeHtml, flattenObject, friendlyUrlString, groupByArrayOfObjects, intersection, jsonToMap, mapToJson, kebabToCamel, kebabToPascal, kebabToSnake, pascalToCamel, pascalToKebab, pascalToSnake, pluck, shuffle, snakeToCamel, snakeToKebab, snakeToPascal, sortArrayOfObjects, stripHtmlTags, transformKeys, uniqArrayOfObjects, uuid, uuidShort };
+export { addMoveToArrayPrototype, areSameArrays, backDate, camelToKebab, camelToSnake, camelToPascal, chunk, compareStrings, deepFreeze, doesExist, escapeHtml, flattenObject, friendlyUrlString, groupByArrayOfObjects, intersection, jsonToMap, mapToJson, kebabToCamel, kebabToPascal, kebabToSnake, pascalToCamel, pascalToKebab, pascalToSnake, pick, omit, pickBy, omitBy, pluck, shuffle, snakeToCamel, snakeToKebab, snakeToPascal, sortArrayOfObjects, stripHtmlTags, transformKeys, uniqArrayOfObjects, uuid, uuidShort, };
 declare const _default: {
     addMoveToArrayPrototype: typeof addMoveToArrayPrototype;
     areSameArrays: (arr1: any[], arr2: any[]) => boolean;
@@ -44,6 +45,10 @@ declare const _default: {
     pascalToCamel: (str: string) => string;
     pascalToKebab: (str: string) => string;
     pascalToSnake: (str: string) => string;
+    pick: (obj: Record<string, any>, keys: string[]) => Record<string, any>;
+    omit: (obj: Record<string, any>, keys: string[]) => Record<string, any>;
+    pickBy: (obj: Record<string, any>, predicate: (value: any, key: string) => boolean) => Record<string, any>;
+    omitBy: (obj: Record<string, any>, predicate: (value: any, key: string) => boolean) => Record<string, any>;
     pluck: (store: any[], key: string) => any[];
     shuffle: (arr: any[]) => any[];
     snakeToCamel: (str: string) => string;

@@ -1,6 +1,6 @@
 {
   "name": "sly-utils",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "sly-utils is a modular and efficient JavaScript utility library designed to simplify complex tasks.",
   "main": "bundle/sly-utils.js",
   "module": "bundle/sly-utils.es.js",

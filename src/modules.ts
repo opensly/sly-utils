@@ -25,6 +25,7 @@ import { groupByArrayOfObjects } from './modules/groupByArrayOfObjects/groupByAr
 import { intersection } from './modules/intersection/intersection';
 import { mapToJson, jsonToMap } from './modules/mapAndJson/mapAndJson';
 import { addMoveToArrayPrototype } from './modules/move/move';
+import { pick, omit, pickBy, omitBy } from './modules/pick/pick';
 import { pluck } from './modules/pluck/pluck';
 import { shuffle } from './modules/shuffle/shuffle';
 import { sortArrayOfObjects } from './modules/sortArrayOfObjects/sortArrayOfObjects';
@@ -57,6 +58,10 @@ export {
   pascalToCamel,
   pascalToKebab,
   pascalToSnake,
+  pick,
+  omit,
+  pickBy,
+  omitBy,
   pluck,
   shuffle,
   snakeToCamel,
@@ -67,7 +72,7 @@ export {
   transformKeys,
   uniqArrayOfObjects,
   uuid,
-  uuidShort
+  uuidShort,
 };
 
 export default {
@@ -94,6 +99,10 @@ export default {
   pascalToCamel,
   pascalToKebab,
   pascalToSnake,
+  pick,
+  omit,
+  pickBy,
+  omitBy,
   pluck,
   shuffle,
   snakeToCamel,
@@ -104,5 +113,5 @@ export default {
   transformKeys,
   uniqArrayOfObjects,
   uuid,
-  uuidShort
+  uuidShort,
 };

@@ -58,6 +58,25 @@ import { chunk, camelToSnake, uuid } from 'sly-utils';
 - Shuffle an array
 - Sort an array of objects
 
+### Object selection utilities
+
+- pick(obj, keys): return a new object containing only the provided keys (safe against prototype pollution)
+- omit(obj, keys): return a new object excluding the provided keys
+- pickBy(obj, predicate): pick keys for which predicate(value, key) returns true
+- omitBy(obj, predicate): omit keys for which predicate(value, key) returns true
+
+Examples:
+
+```js
+import { pick, omit, pickBy, omitBy } from 'sly-utils';
+
+const user = { id: 1, name: 'Alice', secret: 's3cr3t' };
+console.log(pick(user, ['id', 'name'])); // { id: 1, name: 'Alice' }
+console.log(omit(user, ['secret'])); // { id: 1, name: 'Alice' }
+console.log(pickBy(user, v => v != null)); // picks non-null/undefined values
+```
+
+
 ### Utility Methods for String Conversion
 
 - Camel case to snake case
